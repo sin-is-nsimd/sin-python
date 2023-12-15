@@ -6,11 +6,11 @@
 
 TODO
 
-# Run the tests
+# Run the Tests
 
 From the `sin-python` directory, run this command:
 ```bash
-pytest tests/*.py
+pytest tests/*.py # -s
 ```
 
 # License
