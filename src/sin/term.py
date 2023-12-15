@@ -52,3 +52,28 @@ def blue(s):
 def purple(s):
     '''Return the string `s` with grey color code (for VT100 terminal).'''
     return '\033[95m' + s + '\033[0m'
+
+
+def tag_ok():
+    '''Return the string `[OK]` with `sin.term.green` color.'''
+    return '[' + green('OK') + ']'
+
+
+def tag_info():
+    '''Return the string `[INFO]` with `sin.term.blue` color.'''
+    return '[' + blue('INFO') + ']'
+
+
+def tag_warning():
+    '''Return the string `[WARNING]` with `sin.term.orange` color.'''
+    return '[' + orange('WARNING') + ']'
+
+
+def tag_error():
+    '''Return the string `[ERROR]` with `sin.term.red` color.'''
+    return '[' + red('ERROR') + ']'
+
+
+def tag_todo():
+    '''Return the string `[TODO]` with `sin.term.purple` color.'''
+    return '[' + purple('TODO') + ']'
