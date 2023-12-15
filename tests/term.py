@@ -37,3 +37,8 @@ def test_sin_term():
     print(sin.term.orange('Orange text'))
     print(sin.term.blue('Blue text'))
     print(sin.term.purple('Purple text'))
+    print(sin.term.tag_ok())
+    print(sin.term.tag_info())
+    print(sin.term.tag_warning())
+    print(sin.term.tag_error())
+    print(sin.term.tag_todo())
