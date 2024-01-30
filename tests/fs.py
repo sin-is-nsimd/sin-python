@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Copyright © 2021,2023 Lénaïc Bagnères, lenaicb@singularity.fr
+# Copyright © 2024 Rodolphe Cargnello
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +30,7 @@ sys.path.append(os.path.join(os.path.dirname(
 import sin.fs  # nopep8
 
 TEST_FILE_PATH = '_test_file'
+TEST_DIRECTORY_PATH = '_tmp'
 
 
 def create_test_file():
@@ -58,3 +60,13 @@ def test_sin_fs_symlink():
     assert sin.fs.md5(symlink_path) == sin.fs.md5(symlink_path)
     os.remove(symlink_path)
     remove_test_file()
+
+
+def test_sin_fs_pushd():
+    '''Test the `sin.fs.pushd` function'''
+    os.mkdir(TEST_DIRECTORY_PATH)
+    current_path = os.getcwd()
+    with sin.fs.pushd(TEST_DIRECTORY_PATH):
+        assert os.path.join(current_path, TEST_DIRECTORY_PATH) == os.getcwd()
+    assert current_path == os.getcwd()
+    os.rmdir(TEST_DIRECTORY_PATH)
