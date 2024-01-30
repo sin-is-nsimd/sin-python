@@ -4,6 +4,7 @@
 '''`sin.fs` offers helpers for filesystem operations.'''
 
 # Copyright © 2021,2023 Lénaïc Bagnères, lenaicb@singularity.fr
+# Copyright © 2024 Rodolphe Cargnello
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +24,29 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
+from typing import Generator
+import contextlib
 import hashlib
+import os
+
+
+@contextlib.contextmanager
+def pushd(dest: str) -> Generator[None, None, None]:
+    '''
+    Command that allows to manipulate directory stack by using
+    the with-statement contexts
+
+    :param dest: destination path
+    :type dest: str
+    :returns: The generator function that imitate the pushd/popd mechanism
+    :rtype: Generator[None, None, None]
+    '''
+    back = os.getcwd()
+    os.chdir(dest)
+    try:
+        yield
+    finally:
+        os.chdir(back)
 
 
 def md5(path):
