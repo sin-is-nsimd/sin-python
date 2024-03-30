@@ -44,7 +44,7 @@ def run_cmd(cmd, print_cmd=True, exit_on_error=True, use_rosetta=False):
     '''
     if use_rosetta:
         cmd = cmd.replace('"', '\\"')
-        cmd = f'arch -x86_64 zsh -c "{cmd}"'
+        cmd = f'arch -x86_64 /bin/zsh -c "{cmd}"'
     if print_cmd:
         print(cmd)
     r = os.system(cmd)
