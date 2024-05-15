@@ -29,7 +29,7 @@ import sin.term
 
 
 def run_cmd(cmd, print_cmd=True, exit_on_error=True, use_rosetta=False):
-    '''
+    """
     Run a command using `os.system`
 
     If `print_cmd` is `True`, the command is printed.
@@ -41,7 +41,7 @@ def run_cmd(cmd, print_cmd=True, exit_on_error=True, use_rosetta=False):
     If `use_rosetta` is `True`, the command is called with `x86_64` emulation.
     <https://en.wikipedia.org/wiki/Rosetta_(software)>
     `False` by default.
-    '''
+    """
     if use_rosetta:
         cmd = cmd.replace('"', '\\"')
         cmd = f'arch -x86_64 /bin/zsh -c "{cmd}"'
@@ -49,6 +49,6 @@ def run_cmd(cmd, print_cmd=True, exit_on_error=True, use_rosetta=False):
         print(cmd)
     r = os.system(cmd)
     if r != 0:
-        print(sin.term.tag_error(), 'The command `' + cmd + '` failed')
+        print(sin.term.tag_error(), "The command `" + cmd + "` failed")
         if exit_on_error:
             sys.exit(1)

@@ -24,13 +24,12 @@
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(
-    os.path.realpath(__file__)), '..', 'src'))
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "src"))
 import sin.sh  # nopep8
 
 
 def test_sin_sh():
-    '''Test the `sin.sh.*` functions'''
+    """Test the `sin.sh.*` functions"""
     # TODO: Real tests
-    sin.sh.run_cmd('pwd && ls')
-    sin.sh.run_cmd('unknown-command', exit_on_error=False)
+    sin.sh.run_cmd("pwd && ls")
+    sin.sh.run_cmd("unknown-command", exit_on_error=False)

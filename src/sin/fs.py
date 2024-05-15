@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-'''`sin.fs` offers helpers for filesystem operations.'''
+"""`sin.fs` offers helpers for filesystem operations."""
 
 # Copyright © 2021,2023 Lénaïc Bagnères, lenaicb@singularity.fr
 # Copyright © 2024 Rodolphe Cargnello
@@ -32,7 +32,7 @@ import os
 
 @contextlib.contextmanager
 def pushd(dest: str) -> Generator[None, None, None]:
-    '''
+    """
     Command that allows to manipulate directory stack by using
     the with-statement contexts
 
@@ -40,7 +40,7 @@ def pushd(dest: str) -> Generator[None, None, None]:
     :type dest: str
     :returns: The generator function that imitate the pushd/popd mechanism
     :rtype: Generator[None, None, None]
-    '''
+    """
     back = os.getcwd()
     os.chdir(dest)
     try:
@@ -50,9 +50,9 @@ def pushd(dest: str) -> Generator[None, None, None]:
 
 
 def md5(path):
-    '''Compute the md5 of the file `path`.'''
+    """Compute the md5 of the file `path`."""
     m = hashlib.md5()
-    with open(path, 'rb') as f:
+    with open(path, "rb") as f:
         while True:
             buf = f.read(2048)
             if not buf:
@@ -62,16 +62,17 @@ def md5(path):
 
 
 def symlink(src, dest):
-    '''
+    """
     Create the symlink `src` -> `dest`.
 
     If destination already exists, this function does nothing.
-    '''
-    if os.name == 'posix':
+    """
+    if os.name == "posix":
         try:
             os.symlink(os.path.abspath(src), dest)
         except FileExistsError:
             pass
     else:
         raise NotImplementedError(
-            'sin.fs.symlink is not implemented for your OS (' + os.name + ')')
+            "sin.fs.symlink is not implemented for your OS (" + os.name + ")"
+        )
