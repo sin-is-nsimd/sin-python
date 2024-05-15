@@ -24,19 +24,18 @@
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(
-    os.path.realpath(__file__)), '..', 'src'))
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "src"))
 import sin.term  # nopep8
 
 
 def test_sin_term():
-    '''Test the `sin.term.*` functions'''
-    print(sin.term.grey('Grey text'))
-    print(sin.term.red('Red text'))
-    print(sin.term.green('Green text'))
-    print(sin.term.orange('Orange text'))
-    print(sin.term.blue('Blue text'))
-    print(sin.term.purple('Purple text'))
+    """Test the `sin.term.*` functions"""
+    print(sin.term.grey("Grey text"))
+    print(sin.term.red("Red text"))
+    print(sin.term.green("Green text"))
+    print(sin.term.orange("Orange text"))
+    print(sin.term.blue("Blue text"))
+    print(sin.term.purple("Purple text"))
     print(sin.term.tag_ok())
     print(sin.term.tag_info())
     print(sin.term.tag_warning())

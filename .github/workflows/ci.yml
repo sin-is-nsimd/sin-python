@@ -1,0 +1,28 @@
+name: ci
+on:
+  pull_request:
+jobs:
+  macos:
+    continue-on-error: true
+    runs-on: [ self-hosted, "macOS" ]
+    name: macOS
+    steps:
+      - name: Clean
+        run: rm -rf *
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+      - name: venv setup
+        run: |
+          cd sin-python
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install pytest
+      - name: Tests
+        shell: bash
+        run: | 
+          cd sin-python
+          source venv/bin/activate
+          pytest tests/*.py

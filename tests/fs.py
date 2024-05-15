@@ -25,36 +25,35 @@
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(
-    os.path.realpath(__file__)), '..', 'src'))
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "src"))
 import sin.fs  # nopep8
 
-TEST_FILE_PATH = '_test_file'
-TEST_DIRECTORY_PATH = '_tmp'
+TEST_FILE_PATH = "_test_file"
+TEST_DIRECTORY_PATH = "_tmp"
 
 
 def create_test_file():
-    '''Create the `TEST_FILE_PATH` file'''
-    with open(TEST_FILE_PATH, 'w') as f:
-        f.write('Temporary file to test sin/fs.py')
+    """Create the `TEST_FILE_PATH` file"""
+    with open(TEST_FILE_PATH, "w") as f:
+        f.write("Temporary file to test sin/fs.py")
 
 
 def remove_test_file():
-    '''Remove the `TEST_FILE_PATH` file'''
+    """Remove the `TEST_FILE_PATH` file"""
     os.remove(TEST_FILE_PATH)
 
 
 def test_sin_fs_md5():
-    '''Test the `sin.fs.md5` function'''
+    """Test the `sin.fs.md5` function"""
     create_test_file()
-    assert sin.fs.md5(TEST_FILE_PATH) == 'd1abc9789a534a4cd2f469c7a782b690'
+    assert sin.fs.md5(TEST_FILE_PATH) == "d1abc9789a534a4cd2f469c7a782b690"
     remove_test_file()
 
 
 def test_sin_fs_symlink():
-    '''Test the `sin.fs.symlink` function'''
+    """Test the `sin.fs.symlink` function"""
     create_test_file()
-    symlink_path = TEST_FILE_PATH + '_symlink'
+    symlink_path = TEST_FILE_PATH + "_symlink"
     sin.fs.symlink(TEST_FILE_PATH, symlink_path)
     assert os.path.islink(symlink_path)
     assert sin.fs.md5(symlink_path) == sin.fs.md5(symlink_path)
@@ -63,7 +62,7 @@ def test_sin_fs_symlink():
 
 
 def test_sin_fs_pushd():
-    '''Test the `sin.fs.pushd` function'''
+    """Test the `sin.fs.pushd` function"""
     os.mkdir(TEST_DIRECTORY_PATH)
     current_path = os.getcwd()
     with sin.fs.pushd(TEST_DIRECTORY_PATH):
