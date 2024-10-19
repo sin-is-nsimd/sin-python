@@ -35,7 +35,7 @@ TEST_DIRECTORY_PATH = "_tmp"
 def create_test_file():
     """Create the `TEST_FILE_PATH` file"""
     with open(TEST_FILE_PATH, "w") as f:
-        f.write("Temporary file to test sin/fs.py")
+        _ = f.write("Temporary file to test sin/fs.py")
 
 
 def remove_test_file():

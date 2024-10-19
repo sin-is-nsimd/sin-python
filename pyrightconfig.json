@@ -1,0 +1,8 @@
+{
+    "include": ["src/**.py", "test/**.py"],
+    "exclude": [
+        "**/__pycache__"
+    ],
+    "typeCheckingMode": "strict",
+    "reportMissingTypeStubs": false
+}

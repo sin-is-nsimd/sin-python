@@ -24,14 +24,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from typing import Generator
+from typing import Any
+from collections.abc import Generator
 import contextlib
 import hashlib
 import os
 
 
 @contextlib.contextmanager
-def pushd(dest: str) -> Generator[None, None, None]:
+def pushd(dest: str) -> Generator[None, Any, None]:
     """
     Command that allows to manipulate directory stack by using
     the with-statement contexts
@@ -49,7 +50,7 @@ def pushd(dest: str) -> Generator[None, None, None]:
         os.chdir(back)
 
 
-def md5(path):
+def md5(path: str) -> str:
     """Compute the md5 of the file `path`."""
     m = hashlib.md5()
     with open(path, "rb") as f:
@@ -61,7 +62,7 @@ def md5(path):
     return m.hexdigest()
 
 
-def symlink(src, dest):
+def symlink(src: str, dest: str):
     """
     Create the symlink `src` -> `dest`.
 

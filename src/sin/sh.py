@@ -28,7 +28,12 @@ import sys
 import sin.term
 
 
-def run_cmd(cmd, print_cmd=True, exit_on_error=True, use_rosetta=False):
+def run_cmd(
+    cmd: str,
+    print_cmd: bool = True,
+    exit_on_error: bool = True,
+    use_rosetta: bool = False,
+):
     """
     Run a command using `os.system`
 
