@@ -24,56 +24,56 @@
 # SOFTWARE.
 
 
-def grey(s):
+def grey(s: str) -> str:
     """Return the string `s` with grey color code (for VT100 terminals)."""
     return "\033[90m" + s + "\033[0m"
 
 
-def red(s):
+def red(s: str) -> str:
     """Return the string `s` with grey color code (for VT100 terminals)."""
     return "\033[91m" + s + "\033[0m"
 
 
-def green(s):
+def green(s: str) -> str:
     """Return the string `s` with grey color code (for VT100 terminals)."""
     return "\033[92m" + s + "\033[0m"
 
 
-def orange(s):
+def orange(s: str) -> str:
     """Return the string `s` with grey color code (for VT100 terminals)."""
     return "\033[93m" + s + "\033[0m"
 
 
-def blue(s):
+def blue(s: str) -> str:
     """Return the string `s` with grey color code (for VT100 terminals)."""
     return "\033[94m" + s + "\033[0m"
 
 
-def purple(s):
+def purple(s: str) -> str:
     """Return the string `s` with grey color code (for VT100 terminal)."""
     return "\033[95m" + s + "\033[0m"
 
 
-def tag_ok():
+def tag_ok() -> str:
     """Return the string `[OK]` with `sin.term.green` color."""
     return "[" + green("OK") + "]"
 
 
-def tag_info():
+def tag_info() -> str:
     """Return the string `[INFO]` with `sin.term.blue` color."""
     return "[" + blue("INFO") + "]"
 
 
-def tag_warning():
+def tag_warning() -> str:
     """Return the string `[WARNING]` with `sin.term.orange` color."""
     return "[" + orange("WARNING") + "]"
 
 
-def tag_error():
+def tag_error() -> str:
     """Return the string `[ERROR]` with `sin.term.red` color."""
     return "[" + red("ERROR") + "]"
 
 
-def tag_todo():
+def tag_todo() -> str:
     """Return the string `[TODO]` with `sin.term.purple` color."""
     return "[" + purple("TODO") + "]"
