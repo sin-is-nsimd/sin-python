@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Copyright © 2021,2023 Lénaïc Bagnères, lenaicb@singularity.fr
+# Copyright © 2021,2023,2025 Lénaïc Bagnères, lenaicb@singularity.fr
 # Copyright © 2024 Rodolphe Cargnello
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -47,6 +47,27 @@ def test_sin_fs_md5():
     """Test the `sin.fs.md5` function"""
     create_test_file()
     assert sin.fs.md5(TEST_FILE_PATH) == "d1abc9789a534a4cd2f469c7a782b690"
+    remove_test_file()
+
+
+def test_sin_fs_sha1():
+    """Test the `sin.fs.sha1` function"""
+    create_test_file()
+    assert sin.fs.sha1(TEST_FILE_PATH) == "f4199e44e01d81573b3e3818dfc39ff465629390"
+    remove_test_file()
+
+
+def test_sin_fs_sha256():
+    """Test the `sin.fs.sha256` function"""
+    create_test_file()
+    assert sin.fs.sha256(TEST_FILE_PATH) == "09981881a423886541273d5ad3860358f28ca7f3027116614f52a6e198309295"
+    remove_test_file()
+
+
+def test_sin_fs_sha512():
+    """Test the `sin.fs.sha512` function"""
+    create_test_file()
+    assert sin.fs.sha512(TEST_FILE_PATH) == "c52f02de356ab0a0da914153c334f66b402a8599148c70b9b2a2c5229b358744d91878e5f9e403690b6e396908f4d1db3a2ba3fb7061eb8ac2d761f049e98e71"
     remove_test_file()
 
 

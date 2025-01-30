@@ -3,7 +3,7 @@
 
 """`sin.fs` offers helpers for filesystem operations."""
 
-# Copyright © 2021,2023 Lénaïc Bagnères, lenaicb@singularity.fr
+# Copyright © 2021,2023,2025 Lénaïc Bagnères, lenaicb@singularity.fr
 # Copyright © 2024 Rodolphe Cargnello
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -49,16 +49,35 @@ def pushd(dest: str) -> Generator[None, Any, None]:
         os.chdir(back)
 
 
-def md5(path: str) -> str:
-    """Compute the md5 of the file `path`."""
-    m = hashlib.md5()
+def _compute_hash(path: str, hashlib_algo) -> str:
+    """Compute the hash of the file `path` using `hashlib_algo` (e.g. `hashlib.md5()`, `hashlib.sha1()`)."""
     with open(path, "rb") as f:
         while True:
             buf = f.read(2048)
             if not buf:
                 break
-            m.update(buf)
-    return m.hexdigest()
+            hashlib_algo.update(buf)
+    return hashlib_algo.hexdigest()
+
+
+def md5(path: str) -> str:
+    """Compute the md5 of the file `path`."""
+    return _compute_hash(path, hashlib.md5())
+
+
+def sha1(path: str) -> str:
+    """Compute the sha1 of the file `path`."""
+    return _compute_hash(path, hashlib.sha1())
+
+
+def sha256(path: str) -> str:
+    """Compute the sha1 of the file `path`."""
+    return _compute_hash(path, hashlib.sha256())
+
+
+def sha512(path: str) -> str:
+    """Compute the sha512 of the file `path`."""
+    return _compute_hash(path, hashlib.sha512())
 
 
 def symlink(src: str, dest: str):
