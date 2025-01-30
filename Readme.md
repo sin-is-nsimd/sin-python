@@ -2,9 +2,22 @@
 
 `sin-python` contains Python3 helpers.
 
-# Usage
+# Dependencies
 
-TODO
+Mandatory dependencies:
+- `Python 3`
+
+Optional dependencies:
+- `pytest` (to run the tests)
+
+### For Debian GNU/Linux
+
+You can install theses packages (with `root` access):
+```sh
+apt install \
+  python3 \
+  python3-pytest
+```
 
 # Run the Tests
 
@@ -15,7 +28,7 @@ pytest tests/*.py # -s
 
 # License
 
-Copyright © 2023 <https://github.com/sin-is-nsimd>
+Copyright © 2023-2025 <https://github.com/sin-is-nsimd>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
